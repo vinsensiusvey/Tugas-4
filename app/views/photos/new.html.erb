@@ -1,0 +1,6 @@
+<h1>Create New Photos</h1>
+
+<%= form_for @photo, url: {action:"create"}, html: {class:"nifty_form"} do |f|%>
+  <%= f.text_field :title %>
+  <%= f.submit "Create"%>
+<% end %>
