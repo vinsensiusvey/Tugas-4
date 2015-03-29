@@ -10,9 +10,9 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(param_photo)
     if @photo.save
-      redirect_to photos_index_path
+      redirect_to photos_index_path, :notice => "Upload image #{@photo.title} success"
     else
-      render "new"
+      render "new", :error => "Upload image #{@photo.title} failed"
     end
   end
 
@@ -27,22 +27,18 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find_by_id(params[:id])
     if @photo.update(param_photo)
-      flash[:notice] = "Success Update Photo"
-      redirect_to action: 'index'
+      redirect_to photos_path, :notice => "Update image success"
     else
-      flash[:error] = "Fail to Edit"
-      render 'edit'
+      render 'new', error: => "Update image failed"
     end
   end
 
   def destroy
     @photo = Photo.find_by_id(params[:id])
     if @photo.destroy
-      flash[:notice] = "Success Delete Photo"
-      redirect_to action: 'index'
+      redirect_to photos_path, :notice => "Delete photo success"
     else
-      flash[:error] = "Fail to Delete Image"
-      redirect_to action: 'index'
+      redirect_to photos_path, :error => "Delete photo failed"
     end
   end
 
