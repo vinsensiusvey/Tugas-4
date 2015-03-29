@@ -1,5 +1,5 @@
-<%= image_tag @photo.h.url %>
-<%= image_tag @photo.avatar.url(:medium) %>
-<%= image_tag @photo.avatar.url(:thumb) %>
 <h3><%= @photo.title %></h3>
+<%= link_to (image_tag @photo.avatar.url()), photo_path(@photo) %><br>
+<%= link_to "Edit", edit_photo_path(@photo) %> |
+<%= link_to "Delete", photo_path(@photo), :method => :delete, :data => {confirm: "Are you sure?"} %> <br>
 <p><%= link_to 'back to index', photos_path %></p>
