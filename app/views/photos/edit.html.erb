@@ -1,10 +1,4 @@
-<h1>Edit Photo</h1>
-<%= form_for @photo, :url => photos_path, :html => { :multipart => true } do |form| %>
-  <%= form.file_field :avatar %>
-  <%= form.text_field :title %><br>
-  <%= form.submit :submit %>
-<% end %>
-
-<div>
-<%= link_to "back to index", photos_path %>
-</div>
+<h2>Edit Photo</h2>
+<b>Picture</b><br>
+<%= image_tag @photo.avatar.url %>
+<%= render "form" %>

@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(param_photo)
     if @photo.save
-      redirect_to photos_index_path, :notice => "Upload image #{@photo.title} success"
+      redirect_to photos_path, :notice => "Upload image #{@photo.title} success"
     else
       render "new", :error => "Upload image #{@photo.title} failed"
     end
@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
     if @photo.update(param_photo)
       redirect_to photos_path, :notice => "Update image success"
     else
-      render 'new', error: => "Update image failed"
+      render "new", :error => "Update image failed"
     end
   end
 

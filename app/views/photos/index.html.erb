@@ -1,8 +1,10 @@
-<h1>Pinterest by Vinsensius Kevin</h1>
-
-<% @photos.each do |photo| %>
-<%= link_to (image_tag photo.avatar.url(:medium)), photo_path(photo) %><br>>
-<b><%= photo.title %></b><br>
-<span><%= link_to 'edit', edit_photo_path(photo.id)%><span> |
-<span><%= link_to 'delete', photo_path(photo), :method => :delete, data: {confirm: 'Delete this image ?'} %><span><br><br>
-<% end %>
+<div class="row">
+	<% @photos.each do |photo| %>
+		<div class="col-lg-4">
+			<%= link_to (image_tag photo.avatar.url(:medium)), photo_path(photo) %><br>>
+			<b><%= photo.title %></b><br>
+			<span><%= link_to 'edit', edit_photo_path(photo.id)%><span> |
+			<span><%= link_to 'delete', photo_path(photo), :method => :delete, data: {confirm: 'Delete this image ?'} %><span><br><br>
+		</div>
+	<% end %>
+</div>
